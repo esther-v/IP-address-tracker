@@ -15,51 +15,77 @@ header{
     height: 30vh;
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
     align-items: center;
     background-image: url('./images/pattern-bg.png');
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
 }
 h1{
-    margin: 20px auto;
+    margin: 30px auto;
     color: white;
+    font-weight: lighter;
 }
 
 form{
     display: flex;
-    margin-bottom: 30px;
-    /* border: 1px solid red;  */
+    width: 450px;
 }
 
 input{
     padding: 1rem 2rem;
-    border-bottom-left-radius: 8px;
-    border-top-left-radius: 8px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
     border: none;
+    width: 90%;
+    font-size: 16px;
+    
 }
 
 button{
     border: none;
     outline: none;
     color: white;
-    padding: 1rem 2rem;
+    padding: 1rem 1.3rem;
     background: black;
-    border-bottom-right-radius: 8px;
-    border-top-right-radius: 8px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 18px;
+    font-family: inherit;
 }
 
 .infos-bar{
     display: flex;
     justify-content: space-between;
     width: 70%;
-    border: 1px solid blue;
     border-radius: 8px;
     padding: 30px;
     background: white;
-    transform: translateY(30%);
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.box:not(:nth-child(1)){
+    border-left: 1px solid #969696;
+    padding-left: 40px;
+}
+
+.box h5{
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #969696;
+    letter-spacing: 1px;
+}
+
+.box p{
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .map-container{
-    height: 65vh;
+    height: 70vh;
+    background-image: url('./images/map.png');
 }
