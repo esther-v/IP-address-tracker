@@ -88,4 +88,6 @@ button{
 .map-container{
     height: 70vh;
     background-image: url('./images/map.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
