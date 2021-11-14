@@ -32,26 +32,28 @@ form{
     width: 450px;
 }
 
+input, button{
+    border: none;
+    outline: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
 input{
     padding: 1rem 2rem;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
-    border: none;
     width: 90%;
-    font-size: 16px;
-    
+    font-size: 16px;   
 }
 
 button{
-    border: none;
-    outline: none;
     color: white;
     padding: 1rem 1.3rem;
     background: black;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
-    font-size: 18px;
-    font-family: inherit;
+    font-size: 18px; 
 }
 
 .infos-bar{
@@ -65,6 +67,7 @@ button{
     bottom: 0;
     transform: translateY(50%);
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    z-index: 20;
 }
 
 .box:not(:nth-child(1)){
@@ -85,9 +88,10 @@ button{
     font-weight: 500;
 }
 
-.map-container{
+#map{
     height: 70vh;
-    background-image: url('./images/map.png');
+    z-index: -1;
+    /* background-image: url('./images/map.png'); */
     background-repeat: no-repeat;
     background-size: cover;
 }
