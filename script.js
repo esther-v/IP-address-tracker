@@ -4,20 +4,7 @@ const apiURL = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAdd
 
 let ipAddress = ''
 
-
-//initialize the map
-let mymap = L.map('map').setView([51.505, -0.09], 13);
-
-//adding tile layer
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoiZXN0ZXZhIiwiYSI6ImNrdnpsMjFlbzA2dmQyd3BxYmszMTBjaWgifQ.B566jerFzMnpk0FIr8Cjcg'
-}).addTo(mymap);
-
+let body= document.querySelector('body')
 
 //elements to search for an ip Address
 const searchBtn = document.querySelector('.search')
@@ -37,12 +24,35 @@ async function getData() {
     const results = await response.json()
     console.log(results)
 
+    //get latitude and longitude
+    let latitude = results.location.lat
+    let longitude = results.location.lng 
+
     //Display infos
     ipAddressDisplay.textContent = results.ip
     cityDisplay.textContent = results.location.city 
     countryDisplay.textContent = results.location.country
     timeZoneDisplay.textContent = "UTC" + results.location.timezone
     ispDisplay.textContent = results.isp
+
+    //Display map
+    let map = document.createElement('div')
+    body.appendChild(map)
+    map.id = 'map'
+    let mymap = L.map('map').setView([latitude, longitude], 13);
+
+    //adding tile layer
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiZXN0ZXZhIiwiYSI6ImNrdnpsMjFlbzA2dmQyd3BxYmszMTBjaWgifQ.B566jerFzMnpk0FIr8Cjcg'
+    }).addTo(mymap);
+
+    //add marker
+    let marker = L.marker([latitude, longitude]).addTo(mymap)
 }
 
 getData()
@@ -54,6 +64,6 @@ form.addEventListener('submit', (e) => {
     const searchValue = searchBtn.value
     console.log(searchValue)
     ipAddress = searchValue
+    map.remove()
     getData()
 })
-
