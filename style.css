@@ -105,4 +105,5 @@ button{
 .error{
     color: rgb(125, 8, 8);
     display: none;
+    margin-top: 5px;
 }
