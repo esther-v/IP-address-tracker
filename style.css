@@ -101,3 +101,8 @@ button{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.error{
+    color: rgb(125, 8, 8);
+    display: none;
+}
